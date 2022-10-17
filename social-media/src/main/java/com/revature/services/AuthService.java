@@ -2,6 +2,7 @@ package com.revature.services;
 
 import com.revature.models.User;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.net.URI;
 import java.util.Optional;
@@ -22,4 +23,5 @@ public class AuthService {
     public User register(User user) {
         return userService.save(user);
     }
+    
 }
