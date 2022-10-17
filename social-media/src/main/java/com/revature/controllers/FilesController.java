@@ -52,7 +52,7 @@ public class FilesController {
 		try {
 			fileStorageService.save(file);
 			
-			return ResponseEntity.status(HttpStatus.OK).body(new FileInfo(file.getOriginalFilename(),file.getOriginalFilename()));
+			return ResponseEntity.status(HttpStatus.OK).body(new FileInfo(fileStorageService.listSize + file.getOriginalFilename(),fileStorageService.listSize + file.getOriginalFilename()));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.OK).body(null);
 		}

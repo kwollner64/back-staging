@@ -19,6 +19,7 @@ import net.bytebuddy.asm.Advice.This;
 @Service
 public class FileStorageService {
 
+	public static int listSize = 0;
 	private final Path root = Paths.get("uploads");
 	
 	public void init() {
@@ -31,7 +32,9 @@ public class FileStorageService {
 	
 	public void save(MultipartFile file) {
 		try {
-			Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
+			listSize++;
+			
+			Files.copy(file.getInputStream(), this.root.resolve(listSize + file.getOriginalFilename()));
 		} catch (Exception e) {
 			throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
 		}
