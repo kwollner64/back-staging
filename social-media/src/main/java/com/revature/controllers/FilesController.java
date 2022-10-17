@@ -33,20 +33,6 @@ public class FilesController {
 	@Autowired
 	FileStorageService fileStorageService;
 	
-	/*@PostMapping("/upload")
-	public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file){
-		String message = "";
-		try {
-			fileStorageService.save(file);
-			
-			message = "Upload the file successfully: " + file.getOriginalFilename();
-			return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
-		} catch (Exception e) {
-			message = "Could not upload the file: " + file.getOriginalFilename() + "!";
-			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
-		}
-	}*/
-	
 	@PostMapping("/upload")
 	public ResponseEntity<FileInfo> uploadFile(@RequestParam("file") MultipartFile file){
 		try {
@@ -73,34 +59,12 @@ public class FilesController {
 		return ResponseEntity.status(HttpStatus.OK).body(fileInfos);
 	}
 	
-	@GetMapping("/files/test")
-	public ResponseEntity<ResponseMessage> getTest(){
-		ResponseMessage response = new ResponseMessage("whoa!");
-		
-		return ResponseEntity.status(HttpStatus.OK).body(response);
-	}
-	
 	@GetMapping("/files/{filename:.+}")
 	@ResponseBody
 	public ResponseEntity<Resource> getFile(@PathVariable String filename){
 		Resource file = fileStorageService.load(filename);
 		 return ResponseEntity.ok()
 			        .header("Content-Disposition", "attachment; filename=\"" + file.getFilename() + "\"").body(file);
-	}
-	
-	@PostMapping("/upload/test/{bla}")
-	public ResponseEntity<ResponseMessage> uploadFilez(@PathVariable("bla") String bla){
-		String message = "WOW IT WORKS";
-		return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
-		/*try {
-			fileStorageService.save(file);
-			
-			message = "Upload the file successfully: " + file.getOriginalFilename();
-			return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
-		} catch (Exception e) {
-			message = "Could not upload the file: " + file.getOriginalFilename() + "!";
-			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
-		}*/
 	}
 	
 }

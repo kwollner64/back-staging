@@ -22,6 +22,10 @@ public class FileStorageService {
 	public static int listSize = 0;
 	private final Path root = Paths.get("uploads");
 	
+	public Path getPath() {
+		return root;
+	}
+	
 	public void init() {
 		try {
 			Files.createDirectory(root);
