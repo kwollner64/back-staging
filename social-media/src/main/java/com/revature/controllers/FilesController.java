@@ -5,8 +5,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
-
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
@@ -28,13 +27,13 @@ import com.revature.services.FileStorageService;
 
 
 @Controller
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 public class FilesController {
 
 	@Autowired
 	FileStorageService fileStorageService;
 	
-	@PostMapping("/upload")
+	/*@PostMapping("/upload")
 	public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file){
 		String message = "";
 		try {
@@ -45,6 +44,17 @@ public class FilesController {
 		} catch (Exception e) {
 			message = "Could not upload the file: " + file.getOriginalFilename() + "!";
 			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
+		}
+	}*/
+	
+	@PostMapping("/upload")
+	public ResponseEntity<FileInfo> uploadFile(@RequestParam("file") MultipartFile file){
+		try {
+			fileStorageService.save(file);
+			
+			return ResponseEntity.status(HttpStatus.OK).body(new FileInfo(file.getOriginalFilename(),file.getOriginalFilename()));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.OK).body(null);
 		}
 	}
 	
@@ -63,6 +73,13 @@ public class FilesController {
 		return ResponseEntity.status(HttpStatus.OK).body(fileInfos);
 	}
 	
+	@GetMapping("/files/test")
+	public ResponseEntity<ResponseMessage> getTest(){
+		ResponseMessage response = new ResponseMessage("whoa!");
+		
+		return ResponseEntity.status(HttpStatus.OK).body(response);
+	}
+	
 	@GetMapping("/files/{filename:.+}")
 	@ResponseBody
 	public ResponseEntity<Resource> getFile(@PathVariable String filename){
@@ -70,4 +87,20 @@ public class FilesController {
 		 return ResponseEntity.ok()
 			        .header("Content-Disposition", "attachment; filename=\"" + file.getFilename() + "\"").body(file);
 	}
+	
+	@PostMapping("/upload/test/{bla}")
+	public ResponseEntity<ResponseMessage> uploadFilez(@PathVariable("bla") String bla){
+		String message = "WOW IT WORKS";
+		return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
+		/*try {
+			fileStorageService.save(file);
+			
+			message = "Upload the file successfully: " + file.getOriginalFilename();
+			return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
+		} catch (Exception e) {
+			message = "Could not upload the file: " + file.getOriginalFilename() + "!";
+			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
+		}*/
+	}
+	
 }
