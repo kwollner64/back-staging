@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --
 --INSERT INTO users (id, email, password, first_name, last_name) VALUES (
 --    1,
@@ -6,6 +7,9 @@
 --    'Test',
 --    'User'
 --);
+
+=======
+>>>>>>> origin/develop
 
 INSERT INTO users (email, password, first_name, last_name) VALUES (
     'testuser@gmail.com',
