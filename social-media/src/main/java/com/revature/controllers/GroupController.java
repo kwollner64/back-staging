@@ -24,7 +24,7 @@ import com.revature.services.GroupService;
 
 @RestController
 @RequestMapping("/groups")
-@CrossOrigin(origins = "https://mrbucket456.s3.amazonaws.com/index.html", allowCredentials = "true")
+@CrossOrigin(origins = "http://mrbucket456.s3.amazonaws.com/index.html", allowCredentials = "true")
 public class GroupController {
 	
 	@Autowired

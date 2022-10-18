@@ -20,7 +20,7 @@ import com.revature.services.ProfileService;
 
 @RestController
 @RequestMapping("/profiles")
-@CrossOrigin(origins = "https://mrbucket456.s3.amazonaws.com/index.html", allowCredentials = "true")
+@CrossOrigin(origins = "http://mrbucket456.s3.amazonaws.com/index.html", allowCredentials = "true")
 public class ProfileController {
 
 	@Autowired
