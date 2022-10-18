@@ -23,6 +23,10 @@ public class Profile {
 	private int id;
 	private String text;
 	private String imageUrl;
+	private boolean displayEmail;
+	private String birthday;
+	private boolean displayBirthday;
+	private boolean displayAge;
 	@OneToOne
 	private User user;
 }

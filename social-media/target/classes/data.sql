@@ -28,4 +28,4 @@ INSERT INTO posts (id, text, image_url, author_id) VALUES (
     1
 ); 
 
-INSERT INTO profiles(image_url,text,user_id) VALUES('hi','there',1);
+INSERT INTO profiles(image_url,text,display_email, birthday, display_birthday, display_age, user_id) VALUES('hi','there',true, '01-01-1974',true,true,1);

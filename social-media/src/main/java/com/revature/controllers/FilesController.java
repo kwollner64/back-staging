@@ -40,7 +40,7 @@ public class FilesController {
 			
 			return ResponseEntity.status(HttpStatus.OK).body(new FileInfo(fileStorageService.listSize + file.getOriginalFilename(),fileStorageService.listSize + file.getOriginalFilename()));
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.OK).body(null);
+			return ResponseEntity.status(HttpStatus.OK).body(new FileInfo("error","error"));
 		}
 	}
 	
