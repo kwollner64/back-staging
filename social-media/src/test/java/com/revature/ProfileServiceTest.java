@@ -43,8 +43,8 @@ public class ProfileServiceTest {
 	@BeforeEach
 	public void beforeEach() {
 		user = new User(1,"testuser@gmail.com","password","test","user");
-		profile = new Profile(-1,"text from profile","img_url",user);
-		expectedProfile = new Profile(1,"text from expectedProfile","img_url",user);
+		profile = new Profile(-1,"text from profile","img_url",true,"01-01-1974",true,true,user);
+		expectedProfile = new Profile(1,"text from expectedProfile","img_url",true,"01-01-1974",true,true,user);
 		profiles = new ArrayList<Profile>();
 	}
 	

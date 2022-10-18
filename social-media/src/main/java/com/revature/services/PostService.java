@@ -17,7 +17,7 @@ public class PostService {
 	}
 
 	public List<Post> getAll() {
-		return this.postRepository.findAll();
+		return this.postRepository.findAllByOrderByIdDesc();
 	}
 
 	public Post upsert(Post post) {
