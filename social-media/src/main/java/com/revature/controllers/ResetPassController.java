@@ -16,7 +16,7 @@ import com.revature.services.ResetPassService;
 
 @RestController
 @RequestMapping("/auth/reset-password")
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+@CrossOrigin(origins = "https://mrbucket456.s3.amazonaws.com/index.html", allowCredentials = "true")
 public class ResetPassController {
 
 	private final ResetPassService resetPassService;

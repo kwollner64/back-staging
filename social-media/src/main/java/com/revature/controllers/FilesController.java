@@ -27,7 +27,7 @@ import com.revature.services.FileStorageService;
 
 
 @Controller
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+@CrossOrigin(origins = "https://mrbucket456.s3.amazonaws.com/index.html", allowCredentials = "true")
 public class FilesController {
 
 	@Autowired
