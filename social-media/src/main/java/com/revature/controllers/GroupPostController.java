@@ -20,7 +20,7 @@ import com.revature.services.GroupPostService;
 
 @RestController
 @RequestMapping("/group-posts")
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+@CrossOrigin(origins = {"http://mrbucket456.s3.amazonaws.com","http://localhost:4200"}, allowCredentials = "true")
 public class GroupPostController {
 	
 	@Autowired
