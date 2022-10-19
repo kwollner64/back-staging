@@ -40,7 +40,7 @@ public class GroupService {
 		groupRepository.saveAndFlush(group);
 	}
 
-	public void deleteMember(int userID, int groupID) {
+	public void deleteMember(int groupID, int userID) {
 		Group group = groupRepository.findByid(groupID);
 		group.groupMembers.remove(userID);
 		groupRepository.saveAndFlush(group);

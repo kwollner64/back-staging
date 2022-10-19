@@ -58,9 +58,9 @@ public class GroupController {
 	}
 	
 	// DELETE GROUP MEMBER
-	@DeleteMapping("")
-	public void deleteMember(int userID, int groupID) {
-		this.groupService.deleteMember(userID, groupID);
+	@DeleteMapping("/{groupID}")
+	public void deleteMember(@PathVariable("groupID") Integer groupID, int userID) {
+		this.groupService.deleteMember(groupID, userID);
 	}
 	
 	// EDIT GROUP
