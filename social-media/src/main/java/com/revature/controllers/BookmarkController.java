@@ -19,7 +19,7 @@ import com.revature.models.Bookmark;
 
 @RestController
 @RequestMapping("/bookmark")
-@CrossOrigin(origins= "http://mrbucket456.s3.amazonaws.com", allowCredentials="true")
+@CrossOrigin(origins = {"http://mrbucket456.s3.amazonaws.com","http://localhost:4200"}, allowCredentials = "true")
 public class BookmarkController {
 	
 	private final BookmarkService bookmarkService;
