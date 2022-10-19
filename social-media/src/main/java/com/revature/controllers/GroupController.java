@@ -65,8 +65,8 @@ public class GroupController {
 	
 	// EDIT GROUP
 	@PutMapping("")
-	public ResponseEntity<Group> editGroup(@RequestBody Group updatedGroup){
-		return ResponseEntity.ok(groupService.editGroup(updatedGroup));
+	public void editGroup(@RequestBody Group updatedGroup){
+		groupService.editGroup(updatedGroup);
 	}
 	
 	

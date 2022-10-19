@@ -46,8 +46,8 @@ public class GroupService {
 		groupRepository.saveAndFlush(group);
 	}
 	
-	public Group editGroup(Group updatedGroup) {
-		return groupRepository.save(updatedGroup);
+	public void editGroup(Group updatedGroup) {
+		groupRepository.save(updatedGroup);
 	}
 	
 	
