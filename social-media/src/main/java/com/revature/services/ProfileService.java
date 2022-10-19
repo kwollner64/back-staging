@@ -22,7 +22,7 @@ public class ProfileService {
 	
 	public Profile getProfile(User user) {
 		List<Profile> profiles = profileRepository.findByUser(user);
-		if(profiles.isEmpty()) return new Profile(-1,"","",user);
+		if(profiles.isEmpty()) return new Profile(-1,"","",false,"01-01-1974",true,true,user);
 		return profiles.get(0);
 		
 	}
