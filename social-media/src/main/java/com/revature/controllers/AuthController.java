@@ -34,6 +34,8 @@ public class AuthController {
         SessionContainer.sessionUser = optional.get();
         session.setAttribute("user", optional.get());
         System.out.println("Optional get right now! :" + optional.get());
+        
+        System.out.println("Logging in and pulling the attribute" + session.getAttribute("user"));
         return ResponseEntity.ok(optional.get());
     }
 
