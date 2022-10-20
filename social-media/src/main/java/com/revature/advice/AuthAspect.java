@@ -52,7 +52,8 @@ public class AuthAspect {
         // If the user is not logged in
         System.out.println("This is the attribute");
         System.out.println(session.getAttribute("user"));
-        if(session.getAttribute("user") == null) {
+        if(SessionContainer.sessionUser == null) {
+        //if(session.getAttribute("user") == null) {
             throw new NotLoggedInException("Must be logged in to perform this action");
         }
 

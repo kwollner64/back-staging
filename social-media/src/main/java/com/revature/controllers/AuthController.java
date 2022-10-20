@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import com.revature.advice.SessionContainer;
 import com.revature.dtos.LoginRequest;
 import com.revature.dtos.RegisterRequest;
 import com.revature.models.User;
@@ -30,6 +31,7 @@ public class AuthController {
             return ResponseEntity.badRequest().build();
         }
         System.out.println("Ok ok we are in controller logging in!");
+        SessionContainer.sessionUser = optional.get();
         session.setAttribute("user", optional.get());
         System.out.println("Optional get right now! :" + optional.get());
         return ResponseEntity.ok(optional.get());
@@ -38,7 +40,7 @@ public class AuthController {
     @PostMapping("/logout")
     public ResponseEntity<Void> logout(HttpSession session) {
         session.removeAttribute("user");
-
+        SessionContainer.sessionUser = null;
         return ResponseEntity.ok().build();
     }
 
