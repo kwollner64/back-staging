@@ -31,7 +31,7 @@ public class AuthController {
         }
         System.out.println("Ok ok we are in controller logging in!");
         session.setAttribute("user", optional.get());
-
+        System.out.println("Optional get right now! :" + optional.get());
         return ResponseEntity.ok(optional.get());
     }
 
