@@ -29,7 +29,7 @@ public class AuthController {
         if(!optional.isPresent()) {
             return ResponseEntity.badRequest().build();
         }
-
+        System.out.println("Ok ok we are in controller logging in!");
         session.setAttribute("user", optional.get());
 
         return ResponseEntity.ok(optional.get());
